@@ -8,7 +8,7 @@ import {
 import { tryCatch } from "../utils/helpers.js";
 const router = Router();
 router.get("/random", tryCatch(getRandomCocktail));
-router.get("/get-list", getDrinkList);
+router.get("/get-list", tryCatch(getDrinkList));
 // api/cocktails/search?drinkName=${drinkName}
 router.get("/search", tryCatch(getSearchedDrink));
 // api/cocktails/get-one-drink?id=${id}

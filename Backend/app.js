@@ -1,6 +1,6 @@
 import express from "express";
 import cocktailRoutes from "./routes/cocktail.routes.js";
-import { logger } from "./utils/helpers.js";
+import { errorHandler, logger } from "./utils/helpers.js";
 const app = express();
 const port = 3000;
 
@@ -8,6 +8,7 @@ const port = 3000;
 app.use(express.json());
 app.use(logger);
 app.use("/api/cocktails", cocktailRoutes);
+app.use(errorHandler);
 // get on '/'
 app.get("/", (req, res) => {
   res.json({ message: "Cocktail API backend is running" });
