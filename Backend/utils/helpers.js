@@ -3,7 +3,11 @@ export const tryCatch = (controllerFunc) => {
     try {
       await controllerFunc(req, res);
     } catch (error) {
-      next(error); // pass to error-handling middleware
+      next(error);
     }
   };
+};
+export const logger = (req, res, next) => {
+  console.log(`[${req.method}] ${req.originalUrl}`);
+  next();
 };

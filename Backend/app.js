@@ -1,10 +1,12 @@
 import express from "express";
 import cocktailRoutes from "./routes/cocktail.routes.js";
+import { logger } from "./utils/helpers.js";
 const app = express();
 const port = 3000;
 
 // Middleware to parse JSON requests
 app.use(express.json());
+app.use(logger);
 app.use("/api/cocktails", cocktailRoutes);
 // get on '/'
 app.get("/", (req, res) => {

@@ -1,6 +1,8 @@
 import axios from "axios";
 const cockTail_URL = "https://www.thecocktaildb.com/api/json/v1/1";
-
+const drinkListArray = ["lemon", "mango", "mint", "lemongrass"];
+const randomListPfDrinks =
+  drinkListArray[Math.floor(Math.random() * drinkListArray.length)];
 // get random
 export const fetchRandomCocktail = async () => {
   const response = await axios.get(`${cockTail_URL}/random.php`);
@@ -8,7 +10,9 @@ export const fetchRandomCocktail = async () => {
 };
 // get the list
 export const fetchListOfDrinks = async () => {
-  const response = await axios.get(`${cockTail_URL}/filter.php?i=lemon`);
+  const response = await axios.get(
+    `${cockTail_URL}/filter.php?i=${randomListPfDrinks}`
+  );
   return response.data;
 };
 // get by search
