@@ -6,8 +6,11 @@ const port = 3000;
 
 // Middleware to parse JSON requests
 app.use(express.json());
+// loger
 app.use(logger);
+
 app.use("/api/cocktails", cocktailRoutes);
+//error handler
 app.use(errorHandler);
 // get on '/'
 app.get("/", (req, res) => {
