@@ -1,0 +1,24 @@
+:root {
+  --color-primary-black: #1e1919;
+  --color-primary-yellow: #f9c220;
+  --color-primary-orange: #dc8200;
+}
+
+.bg-theme-black {
+  background-color: var(--color-primary-black);
+}
+.bg-theme-yellow {
+  background-color: var(--color-primary-yellow);
+}
+.bg-theme-orange {
+  background-color: var(--color-primary-orange);
+}
+.text-theme-yellow {
+  color: var(--color-primary-yellow);
+}
+.text-theme-orange {
+  color: var(--color-primary-orange);
+}
+.border-theme-yellow {
+  border-color: var(--color-primary-yellow);
+}
