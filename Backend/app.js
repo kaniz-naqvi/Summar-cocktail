@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import cocktailRoutes from "./routes/cocktail.routes.js";
 import { errorHandler, logger } from "./utils/helpers.js";
 const app = express();
@@ -8,6 +9,7 @@ const port = 3000;
 app.use(express.json());
 // loger
 app.use(logger);
+app.use(cors());
 
 app.use("/api/cocktails", cocktailRoutes);
 //error handler
