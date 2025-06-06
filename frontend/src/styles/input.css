@@ -22,3 +22,6 @@
 .border-theme-yellow {
   border-color: var(--color-primary-yellow);
 }
+.font-cinzel {
+  font-family: "Cinzel", serif;
+}
