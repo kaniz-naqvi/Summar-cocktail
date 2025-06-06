@@ -76,6 +76,12 @@ export function renderHero(drink, container) {
 // list
 export function renderCocktailList(drinks = []) {
   const listContainer = document.getElementById("cocktail-list");
+
+  if (!drinks || drinks.length === 0) {
+    listContainer.innerHTML = `<p class="text-center text-theme-yellow text-xl mt-10">No Result found!</p>`;
+    return;
+  }
+
   listContainer.innerHTML = drinks
     .map(
       (drink, index) => `

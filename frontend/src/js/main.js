@@ -31,20 +31,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error(err);
   }
 });
-//List
+//____List____
+// UI
 document.addEventListener("DOMContentLoaded", async () => {
-  const drinksData = await getCocktailList();
-  renderCocktailList(drinksData.drinks);
-});
-// enter key handler for search submission
-document.addEventListener("keydown", async (ev) => {
-  const target = ev.target;
-  if (target && target.id === "searchInput" && ev.key === "Enter") {
-    const query = target.value.trim();
-    if (query) {
-      console.log("Search for:", query);
-      const searchResult = await getSeachedCocktail(query);
-      renderCocktailList(searchResult.drinks);
+  let query;
+  // enter key handler for search submission of nav in list.html(only)
+  document.addEventListener("keydown", async (ev) => {
+    const target = ev.target;
+    if (target && target.id === "searchInput" && ev.key === "Enter") {
+      query = target.value.trim();
+      if (query) {
+        console.log("Search for:", query);
+        const searchResult = await getSeachedCocktail(query);
+        renderCocktailList(searchResult.drinks);
+      }
     }
-  }
+  });
+  const drinksData = await getCocktailList();
+  !query && renderCocktailList(drinksData.drinks);
 });
