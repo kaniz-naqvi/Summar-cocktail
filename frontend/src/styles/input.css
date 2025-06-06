@@ -22,6 +22,30 @@
 .border-theme-yellow {
   border-color: var(--color-primary-yellow);
 }
+.border-theme-orange {
+  border-color: var(--color-primary-orange);
+}
 .font-cinzel {
   font-family: "Cinzel", serif;
+}
+.h-half-screen {
+  height: 85dvh;
+}
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/* btns */
+.btn-orange {
+  background-color: var(--color-primary-orange);
+  padding: 10px 20px;
+}
+.btn-orange-outline {
+  padding: 10px 20px;
+  border: var(--color-primary-orange) 1.5px solid;
+  transition: all ease 0.3s;
+  color: var(--color-primary-orange);
+}
+.btn-orange-outline:hover {
+  background-color: var(--color-primary-orange);
+  color: #fff;
 }

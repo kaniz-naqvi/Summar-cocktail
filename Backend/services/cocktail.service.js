@@ -3,7 +3,7 @@ const cockTail_URL = "https://www.thecocktaildb.com/api/json/v1/1";
 
 // get random
 export const fetchRandomCocktail = async () => {
-  const response = await axios.get(`${cockTail_URL}/random.php`);
+  const response = await axios.get(`${cockTail_URL}/search.php?s=lemon`);
   return response.data;
 };
 // get the list
