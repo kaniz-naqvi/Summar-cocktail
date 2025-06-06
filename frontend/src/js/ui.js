@@ -26,7 +26,7 @@ export const renderNav = (navbar) => {
 
     if (isListPage) {
       searchLink.outerHTML = `
-      <i class="ri-search-line text-xl text-theme-yellow"></i>
+        <i class="ri-search-line text-xl text-theme-yellow"></i>
         <input 
           type="text" 
           placeholder= "Search here..." 
@@ -76,18 +76,19 @@ export function renderHero(drink, container) {
 // list
 export function renderCocktailList(drinks = []) {
   const listContainer = document.getElementById("cocktail-list");
-
+  if (!listContainer) return;
   if (!drinks || drinks.length === 0) {
     listContainer.innerHTML = `<p class="text-center text-theme-yellow text-xl mt-10">No Result found!</p>`;
     return;
   }
-
   listContainer.innerHTML = drinks
     .map(
       (drink, index) => `
     <div class="flex flex-col md:flex-row ${
       index % 2 !== 0 ? "md:flex-row-reverse" : ""
-    } border border-white rounded-xl overflow-hidden lg:p-3 md:p-5 lg:space-y-5 md:space-x-0 shadow-sm">
+    } border border-white rounded-xl overflow-hidden lg:p-3 md:p-5 lg:space-y-5 md:space-x-0 shadow-sm listContainer" id=${
+        drink.idDrink
+      }>
       
       <!-- Image -->
       <div class="w-full md:w-1/2 lg:h-96 sm:h-48 border-r lg:border-light lg:px-2 ${
@@ -116,4 +117,66 @@ export function renderCocktailList(drinks = []) {
   `
     )
     .join("");
+}
+
+// detail
+export function renderDrinkDetails(drink) {
+  const details = document.getElementById("details");
+
+  const ingredients = [];
+  for (let i = 1; i <= 15; i++) {
+    const ing = drink[`strIngredient${i}`];
+    const measure = drink[`strMeasure${i}`];
+    if (ing) {
+      ingredients.push(`${measure ? measure : ""} ${ing}`.trim());
+    }
+  }
+
+  details.innerHTML = `
+    <div class="w-full max-w-7xl px-4 py-4 mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+      
+      <!-- Image -->
+      <div class="w-full h-70 rounded-lg overflow-hidden border border-white/10">
+        <img src="${drink.strDrinkThumb}" alt="${
+    drink.strDrink
+  }" class="w-full h-full object-cover rounded-lg" />
+      </div>
+
+      <!-- Text Content -->
+      <div class="flex flex-col justify-between">
+        <div class="space-y-4">
+          <h1 class="text-4xl font-bold text-[#facc15] font-cinzel">${
+            drink.strDrink
+          }</h1>
+          
+          <div class="text-white/80 space-y-1">
+            <p><span class="font-semibold text-white">Category:</span> ${
+              drink.strCategory
+            }</p>
+            <p><span class="font-semibold text-white">Glass Type:</span> ${
+              drink.strGlass
+            }</p>
+            <p><span class="font-semibold text-white">Type:</span> ${
+              drink.strAlcoholic
+            }</p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-semibold mb-2 text-white">Ingredients</h2>
+            <ul class="list-disc list-inside text-white/90 ml-4 space-y-1">
+              ${ingredients.map((ing) => `<li>${ing}</li>`).join("")}
+            </ul>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-semibold mb-2 text-white">Instructions</h2>
+            <p class="text-white/90 leading-relaxed">${
+              drink.strInstructions
+            }</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  `;
 }

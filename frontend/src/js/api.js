@@ -14,3 +14,8 @@ export const getSeachedCocktail = async (drinkName) => {
   const cocktailList = data.json();
   return cocktailList;
 };
+export const getCocktailById = async (id) => {
+  const data = await fetch(`${url}/get-one-drink?id=${id}`);
+  const cocktail = data.json();
+  return cocktail;
+};

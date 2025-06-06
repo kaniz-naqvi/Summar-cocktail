@@ -38,6 +38,9 @@
 .max-h-half {
   height: 40dvh;
 }
+.h-70 {
+  height: 75dvh;
+}
 .text-shadow {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }

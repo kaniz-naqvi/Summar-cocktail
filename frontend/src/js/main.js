@@ -1,9 +1,15 @@
 import {
+  getCocktailById,
   getCocktailList,
   getRandomCocktail,
   getSeachedCocktail,
 } from "./api.js";
-import { renderCocktailList, renderHero, renderNav } from "./ui.js";
+import {
+  renderCocktailList,
+  renderDrinkDetails,
+  renderHero,
+  renderNav,
+} from "./ui.js";
 //Navbar
 const addNav = () => {
   const navbar = document.querySelector("nav");
@@ -49,4 +55,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
   const drinksData = await getCocktailList();
   !query && renderCocktailList(drinksData.drinks);
+});
+// Detail
+const parent = document.getElementById("cocktail-list");
+
+parent &&
+  parent.addEventListener("click", (e) => {
+    const clickedCard = e.target.closest(".listContainer");
+    if (clickedCard) {
+      const drinkId = clickedCard.id;
+      window.location.href = `details.html?id=${drinkId}`;
+    }
+  });
+document.addEventListener("DOMContentLoaded", async () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get("id");
+
+  if (!id) return;
+
+  try {
+    const res = await getCocktailById(id);
+    renderDrinkDetails(res.drinks[0]);
+  } catch (err) {
+    console.error("Failed to load drink details:", err);
+  }
 });
