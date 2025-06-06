@@ -1,6 +1,10 @@
-import { getRandomCocktail } from "./api.js";
-import { renderHero, renderNav } from "./ui.js";
-
+import {
+  getCocktailList,
+  getRandomCocktail,
+  getSeachedCocktail,
+} from "./api.js";
+import { renderCocktailList, renderHero, renderNav } from "./ui.js";
+//Navbar
 const addNav = () => {
   const navbar = document.querySelector("nav");
   if (!navbar) return;
@@ -12,6 +16,7 @@ const addNav = () => {
   }
 };
 addNav();
+//Home
 document.addEventListener("DOMContentLoaded", async () => {
   const hero = document.getElementById("hero");
   if (!hero) return;
@@ -24,5 +29,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (err) {
     hero.innerHTML = `<p class="text-red-500 text-center mt-10">Failed to load cocktail. Try again later.</p>`;
     console.error(err);
+  }
+});
+//List
+document.addEventListener("DOMContentLoaded", async () => {
+  const drinksData = await getCocktailList();
+  renderCocktailList(drinksData.drinks);
+});
+// enter key handler for search submission
+document.addEventListener("keydown", async (ev) => {
+  const target = ev.target;
+  if (target && target.id === "searchInput" && ev.key === "Enter") {
+    const query = target.value.trim();
+    if (query) {
+      console.log("Search for:", query);
+      const searchResult = await getSeachedCocktail(query);
+      renderCocktailList(searchResult.drinks);
+    }
   }
 });

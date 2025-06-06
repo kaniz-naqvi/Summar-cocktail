@@ -28,8 +28,15 @@
 .font-cinzel {
   font-family: "Cinzel", serif;
 }
+.border-b-theme-yellow {
+  border-bottom: var(--color-primary-yellow) 2px solid;
+}
+/* height */
 .h-half-screen {
   height: 85dvh;
+}
+.max-h-half {
+  height: 40dvh;
 }
 .text-shadow {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -38,6 +45,12 @@
 .btn-orange {
   background-color: var(--color-primary-orange);
   padding: 10px 20px;
+  transition: all ease 0.3s;
+  color: var(--color-primary-black);
+}
+.btn-orange:hover {
+  background-color: transparent;
+  color: #fff;
 }
 .btn-orange-outline {
   padding: 10px 20px;
@@ -45,6 +58,7 @@
   transition: all ease 0.3s;
   color: var(--color-primary-orange);
 }
+
 .btn-orange-outline:hover {
   background-color: var(--color-primary-orange);
   color: #fff;

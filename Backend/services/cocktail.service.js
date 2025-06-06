@@ -8,7 +8,7 @@ export const fetchRandomCocktail = async () => {
 };
 // get the list
 export const fetchListOfCocktail = async () => {
-  const drinkListArray = ["lemon", "mango", "mint", "lemongrass"];
+  const drinkListArray = ["lemon", "mango", "mint"];
   const randomListPfDrinks =
     drinkListArray[Math.floor(Math.random() * drinkListArray.length)];
   const response = await axios.get(
