@@ -53,6 +53,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.log("Search for:", query);
         const searchResult = await getSeachedCocktail(query);
         renderCocktailList(searchResult.drinks, localStorageFavs, parent);
+      } else {
+        const drinksData = await getCocktailList();
+        renderCocktailList(drinksData.drinks, localStorageFavs, parent);
       }
     }
   });
