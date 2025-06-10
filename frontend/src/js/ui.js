@@ -85,7 +85,7 @@ export function renderCocktailList(drinks = [], favIds = [], listContainer) {
     .map((drink, index) => {
       const isFav = favIds.includes(String(drink.idDrink));
       return `
-        <div class="flex flex-col md:flex-row ${
+        <div class="flex flex-col cursor-pointer md:flex-row ${
           index % 2 !== 0 ? "md:flex-row-reverse" : ""
         } border border-white rounded-xl overflow-hidden lg:p-3 md:p-5 lg:space-y-5 md:space-x-0 shadow-sm listContainer" id=${
         drink.idDrink
