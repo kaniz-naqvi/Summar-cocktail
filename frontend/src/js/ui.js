@@ -77,7 +77,7 @@ export function renderHero(drink, container) {
 export function renderCocktailList(drinks = [], favIds = [], listContainer) {
   if (!listContainer) return;
   if (!drinks || drinks.length === 0) {
-    listContainer.innerHTML = `<p class="text-center text-theme-yellow text-xl mt-10">No Result found!</p>`;
+    listContainer.innerHTML = `<p class="text-center text-theme-yellow text-xl mt-10">No Drink found!</p>`;
     return;
   }
 

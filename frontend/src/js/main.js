@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 // Detail
 const clickableElement = parent || favList;
-clickableElement.addEventListener("click", (e) => {
+clickableElement?.addEventListener("click", (e) => {
   const favClick = e.target.closest(".heart-btn");
   const clickedCard = e.target.closest(".listContainer");
 
@@ -106,7 +106,6 @@ clickableElement.addEventListener("click", (e) => {
 document.addEventListener("DOMContentLoaded", async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get("id");
-
   if (!id) return;
 
   try {
